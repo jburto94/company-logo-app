@@ -43,11 +43,13 @@ class App extends Component {
         <form onSubmit={this.onSearchSubmit}>
           <input type='text'
                  placeholder='Enter Company URL Here'
-                 onChange={this.onSearchChange} />
+                 onChange={this.onSearchChange} 
+                 className='urlInput' />
           <input type='text'
-                 placeholder='Enter Company URL Here'
-                 onChange={this.onSizeChange} />
-          <input type="submit" value="Submit" />
+                 placeholder='Enter Logo Size Up to 800'
+                 onChange={this.onSizeChange} 
+                 className='sizeInput' />
+          <input type="submit" value="GET YOUR LOGO" className='submitButton' />
         </form>
         <img src={`${URL}${searchImage}?size=${imageSize}`} 
              alt={searchImage} />
