@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import Form from './Form';
+import Search from './Search';
+import Size from './Size';
+import Logo from './Logo';
 import './App.css';
 
 class App extends Component {
@@ -6,9 +10,9 @@ class App extends Component {
     super(props);
     this.state = {
       searchTerm: '',
-      sizeTerm: '250',
+      sizeTerm: '',
       searchImage: 'google.com/',
-      imageSize: '250'
+      imageSize: ''
     };
 
     this.onSearchChange = this.onSearchChange.bind(this);
@@ -35,24 +39,15 @@ class App extends Component {
   }
 
   render() {
-    const URL = 'https://logo.clearbit.com/';
     const {searchImage, imageSize} = this.state;
-
+  
     return (
       <div className="App">
-        <form onSubmit={this.onSearchSubmit}>
-          <input type='text'
-                 placeholder='Enter Company URL Here'
-                 onChange={this.onSearchChange} 
-                 className='urlInput' />
-          <input type='text'
-                 placeholder='Enter Logo Size Up to 800'
-                 onChange={this.onSizeChange} 
-                 className='sizeInput' />
-          <input type="submit" value="GET YOUR LOGO" className='submitButton' />
-        </form>
-        <img src={`${URL}${searchImage}?size=${imageSize}`} 
-             alt={searchImage} />
+        <Form onSubmit={this.onSearchSubmit}>
+          <Search onChange={this.onSearchChange} />
+          <Size onChange={this.onSizeChange} />
+        </Form>
+        <Logo image={searchImage} size={imageSize} />
       </div>
     );
   }
